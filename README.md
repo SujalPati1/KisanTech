@@ -167,12 +167,8 @@ Send the Firebase ID token as `Authorization: Bearer <token>` on routes marked a
 
 ## Known limitations
 
-- **No route protects `/admin/*`.** `adminRoutes.js` has no auth middleware, and both the Admin dashboard and the farmer client call it directly — anyone who finds the URL can read or write schemes, instruments and content. This needs a real auth check before going anywhere near production.
-- **Admin dashboard sign-in is mocked.** `Admin/src/contexts/AuthContext.jsx` checks against a hardcoded user list and keeps the session in `localStorage`; it isn't wired to the backend's Firebase auth at all.
-- **`GET /admin/farmers` doesn't exist.** `Admin/src/pages/FarmersPage.jsx` calls it, but `adminRoutes.js` only exposes `updateUsers`/`deleteUsers` — there's no farmer-listing endpoint, and `addUsers` is commented out in the router.
-- **`/api/rentals` doesn't exist.** The client calls it after a successful Stripe checkout, but no route or model records a rental — a paid rental currently isn't persisted anywhere.
 - **Two branches, one system.** Cloning `master` alone gets you no backend; cloning `sujal` alone gets you no frontends. There's no top-level script that sets up both — see [Getting started](#getting-started) for the two-clone workflow.
-- **CORS on the backend's Socket.IO server is `origin: '*'`** — fine for local development, not for production.
+
 
 ## Contributing
 
