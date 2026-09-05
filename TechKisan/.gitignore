@@ -1,0 +1,7 @@
+# Firebase service account key and environment variables
+.env
+src/config/serviceAccountKey.json
+
+node_modules
+logs
+*.log
